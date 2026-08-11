@@ -1,0 +1,18 @@
+{
+  "name": "tabec",
+  "private": true,
+  "workspaces": [
+    "apps/*"
+  ],
+  "scripts": {
+    "dev:www": "npm run dev --workspace=apps/www",
+    "dev:admin": "npm run dev --workspace=apps/admin",
+    "build:www": "npm run build --workspace=apps/www",
+    "build:admin": "npm run build --workspace=apps/admin",
+    "build": "npm run build:www && npm run build:admin",
+    "lint": "npm run lint --workspace=apps/www && npm run lint --workspace=apps/admin"
+  },
+  "allowScripts": {
+    "unrs-resolver@1.12.2": true
+  }
+}

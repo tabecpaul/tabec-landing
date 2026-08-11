@@ -1,3 +1,15 @@
 타베크-사이트구축계획서.md
 .claude/
 .DS_Store
+
+# node / monorepo
+node_modules/
+.next/
+out/
+build/
+*.tsbuildinfo
+next-env.d.ts
+.env*
+!.env.example
+.vercel
+npm-debug.log*
