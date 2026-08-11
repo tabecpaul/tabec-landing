@@ -38,6 +38,7 @@ export default function QuoteForm() {
       budget: budget || null,
       file_note: filenote || null,
       message: message || null,
+      privacy_consent: true,
     });
 
     if (error) {
@@ -135,6 +136,19 @@ ${message}`
             placeholder="디자인 컨셉, 문구, 로고 사용 여부 등 자유롭게 작성해 주세요."
           />
         </div>
+      </div>
+      <div className="privacy-consent">
+        <p className="privacy-consent-title">개인정보 수집 및 이용 동의</p>
+        <ul>
+          <li>수집 항목: 담당자 성함, 연락처, 이메일, 교회/기관명</li>
+          <li>수집 목적: 맞춤 제작 견적 상담 및 안내</li>
+          <li>보유 및 이용 기간: 상담 완료일로부터 1년 (관계 법령에 따라 보존이 필요한 경우 해당 기간까지)</li>
+        </ul>
+        <p>귀하는 개인정보 수집·이용에 동의하지 않을 권리가 있으며, 동의를 거부할 경우 견적 상담이 제한될 수 있습니다.</p>
+        <label className="privacy-consent-check">
+          <input type="checkbox" name="privacyConsent" required />
+          위 개인정보 수집 및 이용에 동의합니다. (필수)
+        </label>
       </div>
       {status === "error" && <p className="form-error">{errorMessage}</p>}
       <button type="submit" className="submit-btn" disabled={status === "submitting"}>

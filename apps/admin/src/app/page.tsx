@@ -1,4 +1,6 @@
 import { supabaseAdmin } from "@/lib/supabase-admin";
+import { createClient } from "@/lib/supabase-server";
+import SignOutButton from "@/components/SignOutButton";
 
 export const dynamic = "force-dynamic";
 
@@ -19,6 +21,11 @@ type QuoteRequest = {
 };
 
 export default async function Home() {
+  const supabase = await createClient();
+  const {
+    data: { user },
+  } = await supabase.auth.getUser();
+
   const { data, error } = await supabaseAdmin
     .from("quote_requests")
     .select("*")
@@ -26,7 +33,13 @@ export default async function Home() {
 
   return (
     <main className="min-h-screen bg-zinc-50 p-8">
-      <h1 className="mb-6 text-2xl font-bold text-zinc-900">견적 요청 목록</h1>
+      <div className="mb-6 flex items-center justify-between">
+        <h1 className="text-2xl font-bold text-zinc-900">견적 요청 목록</h1>
+        <div className="flex items-center gap-3 text-sm text-zinc-500">
+          <span>{user?.email}</span>
+          <SignOutButton />
+        </div>
+      </div>
 
       {error && (
         <p className="rounded border border-red-200 bg-red-50 p-4 text-red-700">
