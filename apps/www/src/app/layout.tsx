@@ -40,6 +40,9 @@ export const metadata: Metadata = {
   },
   verification: {
     google: "wac2QJdtHHJUIeVOkqkjusrqmeF69U8zVCm5coNU11E",
+    other: {
+      "naver-site-verification": "43f1d47c0253fe30fccd1b1e20da2de02a1003ef",
+    },
   },
   openGraph: {
     title: "타베크 Custom | 교회 맞춤 기념품 제작",
