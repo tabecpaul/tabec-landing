@@ -487,6 +487,20 @@ textarea {
 .submit-btn:hover {
   transform: translateY(-2px);
 }
+.submit-btn:disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+  transform: none;
+}
+.form-error {
+  background: #fdecec;
+  border: 1px solid #e6b3b3;
+  border-radius: 6px;
+  padding: 12px 14px;
+  font-size: 13px;
+  color: #a13a3a;
+  margin-top: 8px;
+}
 
 /* ABOUT */
 .about-grid {

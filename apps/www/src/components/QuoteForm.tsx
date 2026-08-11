@@ -1,11 +1,21 @@
 "use client";
 
-import { FormEvent } from "react";
+import { FormEvent, useState } from "react";
+import { supabase } from "@/lib/supabase";
+
+type Status = "idle" | "submitting" | "error";
 
 export default function QuoteForm() {
-  function handleSubmit(e: FormEvent<HTMLFormElement>) {
+  const [status, setStatus] = useState<Status>("idle");
+  const [errorMessage, setErrorMessage] = useState("");
+
+  async function handleSubmit(e: FormEvent<HTMLFormElement>) {
     e.preventDefault();
-    const data = new FormData(e.currentTarget);
+    setStatus("submitting");
+    setErrorMessage("");
+
+    const form = e.currentTarget;
+    const data = new FormData(form);
     const name = data.get("name") as string;
     const org = data.get("org") as string;
     const phone = data.get("phone") as string;
@@ -16,6 +26,25 @@ export default function QuoteForm() {
     const budget = data.get("budget") as string;
     const filenote = data.get("filenote") as string;
     const message = data.get("message") as string;
+
+    const { error } = await supabase.from("quote_requests").insert({
+      name,
+      organization: org,
+      phone,
+      email,
+      category,
+      quantity: Number(qty),
+      deadline: deadline || null,
+      budget: budget || null,
+      file_note: filenote || null,
+      message: message || null,
+    });
+
+    if (error) {
+      setStatus("error");
+      setErrorMessage("전송 중 문제가 발생했습니다. 잠시 후 다시 시도해 주시거나, 아래 메일 앱으로 직접 보내주세요.");
+      return;
+    }
 
     const subject = encodeURIComponent(`[견적요청] ${org} - ${category}`);
     const body = encodeURIComponent(
@@ -33,6 +62,8 @@ export default function QuoteForm() {
 ${message}`
     );
 
+    form.reset();
+    setStatus("idle");
     window.location.href = `mailto:tabec@naver.com?subject=${subject}&body=${body}`;
   }
 
@@ -105,8 +136,9 @@ ${message}`
           />
         </div>
       </div>
-      <button type="submit" className="submit-btn">
-        견적 요청 이메일 보내기
+      {status === "error" && <p className="form-error">{errorMessage}</p>}
+      <button type="submit" className="submit-btn" disabled={status === "submitting"}>
+        {status === "submitting" ? "전송 중..." : "견적 요청 보내기"}
       </button>
     </form>
   );
