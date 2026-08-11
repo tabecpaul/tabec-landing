@@ -38,6 +38,9 @@ export const metadata: Metadata = {
   alternates: {
     canonical: SITE_URL,
   },
+  verification: {
+    google: "wac2QJdtHHJUIeVOkqkjusrqmeF69U8zVCm5coNU11E",
+  },
   openGraph: {
     title: "타베크 Custom | 교회 맞춤 기념품 제작",
     description: SITE_DESCRIPTION,
