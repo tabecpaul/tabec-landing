@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import { Noto_Sans_KR } from "next/font/google";
 import { Analytics } from "@vercel/analytics/next";
 import { SITE_DESCRIPTION, SITE_NAME, SITE_URL } from "@/lib/site";
+import { PostHogProvider } from "./providers";
 import "./globals.css";
 
 const notoSansKr = Noto_Sans_KR({
@@ -91,8 +92,10 @@ export default function RootLayout({ children }: LayoutProps<"/">) {
           type="application/ld+json"
           dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
         />
-        {children}
-        <Analytics />
+        <PostHogProvider>
+          {children}
+          <Analytics />
+        </PostHogProvider>
       </body>
     </html>
   );
