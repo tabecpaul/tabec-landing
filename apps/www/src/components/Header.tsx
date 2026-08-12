@@ -1,4 +1,5 @@
 import Image from "next/image";
+import Link from "next/link";
 
 export default function Header() {
   return (
@@ -9,18 +10,19 @@ export default function Header() {
           <span>타베크</span>
         </div>
         <div className="nav-links">
-          <a href="#about">회사소개</a>
-          <a href="#process">진행절차</a>
-          <a href="#products">제작 카테고리</a>
-          <a href="#portfolio">납품 실적</a>
-          <a href="#faq">FAQ</a>
+          <Link href="/#about">회사소개</Link>
+          <Link href="/#process">진행절차</Link>
+          <Link href="/#products">제작 카테고리</Link>
+          <Link href="/#portfolio">납품 실적</Link>
+          <Link href="/blog">블로그</Link>
+          <Link href="/#faq">FAQ</Link>
           <a href="https://smartstore.naver.com/tabec" target="_blank" rel="noopener">
             소매구매(스마트스토어)
           </a>
         </div>
-        <a href="#quote" className="nav-cta">
+        <Link href="/#quote" className="nav-cta">
           무료 견적 받기
-        </a>
+        </Link>
       </nav>
     </header>
   );
