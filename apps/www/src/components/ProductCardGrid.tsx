@@ -1,9 +1,11 @@
 import { ReactNode } from "react";
+import Link from "next/link";
 
 export type ProductCardItem = {
   icon: ReactNode;
   title: string;
   text: string;
+  href?: string;
 };
 
 export default function ProductCardGrid({ items }: { items: ProductCardItem[] }) {
@@ -18,6 +20,11 @@ export default function ProductCardGrid({ items }: { items: ProductCardItem[] })
           <div className="prod-info">
             <h3>{item.title}</h3>
             <p>{item.text}</p>
+            {item.href && (
+              <Link href={item.href} className="prod-more">
+                자세히 보기 →
+              </Link>
+            )}
           </div>
         </div>
       ))}

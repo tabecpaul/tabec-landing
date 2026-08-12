@@ -12,6 +12,7 @@ export type BlogPostMeta = {
   title: string;
   description: string;
   date: string;
+  category?: string;
 };
 
 export type BlogPost = BlogPostMeta & {
@@ -36,9 +37,15 @@ export function getAllPostsMeta(): BlogPostMeta[] {
         title: String(data.title ?? slug),
         description: String(data.description ?? ""),
         date: String(data.date ?? ""),
+        category: data.category ? String(data.category) : undefined,
       };
     })
     .sort((a, b) => (a.date < b.date ? 1 : -1));
+}
+
+export function getLatestPostByCategory(category: string): BlogPostMeta | null {
+  const match = getAllPostsMeta().find((post) => post.category === category);
+  return match ?? null;
 }
 
 export async function getPostBySlug(slug: string): Promise<BlogPost | null> {
@@ -55,6 +62,7 @@ export async function getPostBySlug(slug: string): Promise<BlogPost | null> {
     title: String(data.title ?? slug),
     description: String(data.description ?? ""),
     date: String(data.date ?? ""),
+    category: data.category ? String(data.category) : undefined,
     contentHtml: processed.toString(),
   };
 }
