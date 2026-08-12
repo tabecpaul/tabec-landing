@@ -782,3 +782,32 @@ footer .copyright {
   border-radius: 8px;
   margin: 20px 0;
 }
+
+/* CARD NEWS */
+.card-news-strip {
+  max-width: 720px;
+  margin: 0 auto 40px;
+}
+.card-news-strip-track {
+  display: flex;
+  gap: 12px;
+  overflow-x: auto;
+  scroll-snap-type: x mandatory;
+  padding-bottom: 6px;
+}
+.card-news-strip-img {
+  flex: 0 0 auto;
+  height: 420px;
+  width: auto;
+  aspect-ratio: 1080 / 1350;
+  object-fit: cover;
+  border-radius: 12px;
+  border: 1px solid var(--line);
+  box-shadow: 0 8px 20px rgba(82, 67, 61, 0.12);
+  scroll-snap-align: start;
+}
+@media (max-width: 720px) {
+  .card-news-strip-img {
+    height: 320px;
+  }
+}

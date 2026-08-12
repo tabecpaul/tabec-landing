@@ -2,7 +2,9 @@ import type { Metadata } from "next";
 import { notFound } from "next/navigation";
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
+import CardNewsStrip from "@/components/CardNewsStrip";
 import { getAllPostSlugs, getPostBySlug } from "@/lib/blog";
+import { getCardNewsForSlug } from "@/lib/card-news";
 import { SITE_URL } from "@/lib/site";
 
 export async function generateStaticParams() {
@@ -41,6 +43,8 @@ export default async function BlogPostPage({
   const post = await getPostBySlug(slug);
   if (!post) notFound();
 
+  const cardNewsSlides = await getCardNewsForSlug(slug);
+
   const jsonLd = {
     "@context": "https://schema.org",
     "@type": "BlogPosting",
@@ -55,6 +59,7 @@ export default async function BlogPostPage({
       <Header />
       <article className="post">
         <div className="container">
+          <CardNewsStrip slides={cardNewsSlides} />
           <div className="post-header">
             <span className="post-date">{post.date}</span>
             <h1>{post.title}</h1>
