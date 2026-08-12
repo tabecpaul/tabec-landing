@@ -1,7 +1,9 @@
+import Link from "next/link";
 import { supabaseAdmin } from "@/lib/supabase-admin";
 import { createClient } from "@/lib/supabase-server";
 import SignOutButton from "@/components/SignOutButton";
 import StatusSelect from "@/components/StatusSelect";
+import { submitSitemapToIndexNow } from "./actions";
 
 export const dynamic = "force-dynamic";
 
@@ -59,7 +61,23 @@ export default async function Home({
   return (
     <main className="min-h-screen bg-zinc-50 p-8">
       <div className="mb-6 flex items-center justify-between">
-        <h1 className="text-2xl font-bold text-zinc-900">견적 요청 목록</h1>
+        <div className="flex items-center gap-4">
+          <h1 className="text-2xl font-bold text-zinc-900">견적 요청 목록</h1>
+          <Link
+            href="/card-news"
+            className="rounded border border-zinc-300 bg-white px-3 py-1.5 text-sm font-semibold text-zinc-700 hover:bg-zinc-100"
+          >
+            카드뉴스 →
+          </Link>
+          <form action={submitSitemapToIndexNow}>
+            <button
+              type="submit"
+              className="rounded border border-zinc-300 bg-white px-3 py-1.5 text-sm font-semibold text-zinc-700 hover:bg-zinc-100"
+            >
+              IndexNow 전체 제출
+            </button>
+          </form>
+        </div>
         <div className="flex items-center gap-3 text-sm text-zinc-500">
           <span>{user?.email}</span>
           <SignOutButton />
