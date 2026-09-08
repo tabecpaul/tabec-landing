@@ -12,7 +12,7 @@ export default function Header() {
         <div className="nav-links">
           <Link href="/#about">회사소개</Link>
           <Link href="/#process">진행절차</Link>
-          <Link href="/#products">제작 카테고리</Link>
+          <Link href="/#products">생산 라인업</Link>
           <Link href="/#portfolio">납품 실적</Link>
           <Link href="/blog">블로그</Link>
           <Link href="/#faq">FAQ</Link>

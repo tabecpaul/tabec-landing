@@ -93,13 +93,12 @@ ${message}`
       <div className="form-row">
         <div>
           <label htmlFor="category">희망 제작 품목</label>
-          <select id="category" name="category" defaultValue="십자가">
-            <option>십자가</option>
-            <option>컵 / 머그</option>
+          <select id="category" name="category" defaultValue="나무 십자가">
+            <option>나무 십자가</option>
+            <option>레진 십자가</option>
+            <option>조각상 / 예배당</option>
+            <option>성찬 컵 / 전병</option>
             <option>기념접시</option>
-            <option>미니어처 예배당</option>
-            <option>기도상</option>
-            <option>성찬품</option>
             <option>기타 (직접 입력)</option>
           </select>
         </div>

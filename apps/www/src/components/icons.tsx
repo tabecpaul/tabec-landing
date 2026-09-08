@@ -6,6 +6,23 @@ export function CrossIcon() {
   );
 }
 
+export function WoodCrossIcon() {
+  return (
+    <svg viewBox="0 0 24 24" fill="none" strokeWidth={1.5}>
+      <path d="M10 3h4v6h5v4h-5v8h-4v-8H5V9h5V3z" strokeLinejoin="round" />
+    </svg>
+  );
+}
+
+export function ResinCrossIcon() {
+  return (
+    <svg viewBox="0 0 24 24" fill="none" strokeWidth={1.5}>
+      <path d="M12 2v20M6 8h12" strokeLinecap="round" />
+      <path d="M15 5l1.6-1.6L18.2 5" strokeLinecap="round" strokeLinejoin="round" />
+    </svg>
+  );
+}
+
 export function MugIcon() {
   return (
     <svg viewBox="0 0 24 24" fill="none" strokeWidth={1.5}>
@@ -29,6 +46,17 @@ export function FigurineIcon() {
     <svg viewBox="0 0 24 24" fill="none" strokeWidth={1.5}>
       <circle cx="12" cy="5" r="2.5" />
       <path d="M9 21v-6l-2-4 2-2h6l2 2-2 4v6" />
+    </svg>
+  );
+}
+
+export function FigurineChurchIcon() {
+  return (
+    <svg viewBox="0 0 24 24" fill="none" strokeWidth={1.5}>
+      <circle cx="8" cy="6" r="2" />
+      <path d="M6 20v-5l-1.5-3 1.5-1.5h4L11.5 12 10 15v5" />
+      <path d="M15 20V11l3.5-2.5L22 11v9" />
+      <path d="M18.5 6V8.5" />
     </svg>
   );
 }
