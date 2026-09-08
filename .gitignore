@@ -1,6 +1,7 @@
 타베크-사이트구축계획서.md
 .claude/
 .DS_Store
+_backup-not-public/
 
 # node / monorepo
 node_modules/
