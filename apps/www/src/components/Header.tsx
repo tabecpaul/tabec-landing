@@ -1,12 +1,13 @@
-import Image from "next/image";
 import Link from "next/link";
+import { getLogoSrc } from "@/lib/logo";
 
 export default function Header() {
   return (
     <header>
       <nav>
         <div className="logo">
-          <Image src="/tabec-logo.png" alt="타베크 로고" width={1181} height={591} priority />
+          {/* eslint-disable-next-line @next/next/no-img-element */}
+          <img src={getLogoSrc()} alt="타베크 로고" />
           <span>타베크</span>
         </div>
         <div className="nav-links">

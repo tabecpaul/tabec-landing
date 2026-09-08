@@ -1,11 +1,12 @@
-import Image from "next/image";
+import { getLogoSrc } from "@/lib/logo";
 
 export default function Footer() {
   return (
     <footer>
       <div className="container">
         <div className="logo">
-          <Image src="/tabec-logo.png" alt="타베크 로고" width={1181} height={591} />
+          {/* eslint-disable-next-line @next/next/no-img-element */}
+          <img src={getLogoSrc()} alt="타베크 로고" />
           <span style={{ color: "#c9a35d" }}>Custom</span>
         </div>
         <p>20년 기독교 선물용품 수입·제작 경력 | 문의: tabec@naver.com</p>
