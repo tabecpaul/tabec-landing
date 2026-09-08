@@ -1,11 +1,7 @@
 const timeline = [
-  {
-    year: "20XX",
-    text: "회사 설립 및 사업자 등록",
-    note: "※ 실제 연도로 교체 예정",
-  },
-  { year: "20XX", text: "해외 생산 네트워크(중국·인도네시아·대만·홍콩) 구축" },
-  { year: "20XX", text: "기독교 백화점·교회 정기 납품 개시" },
+  { year: "2006.11", text: "회사 설립 및 사업자 등록" },
+  { year: "2006.11", text: "기독교 백화점·교회 정기 납품 개시" },
+  { year: "2007.02", text: "해외 생산 네트워크(중국·인도네시아·대만·홍콩) 구축" },
   { year: "2026", text: "교회·기독교 기관 대상 맞춤 제작(주문제작) 서비스 확장" },
 ];
 
@@ -43,9 +39,7 @@ export default function About() {
               {timeline.map((item) => (
                 <li key={item.year + item.text}>
                   <span className="year">{item.year}</span>
-                  <p>
-                    {item.text} {item.note && <em>{item.note}</em>}
-                  </p>
+                  <p>{item.text}</p>
                 </li>
               ))}
             </ul>
