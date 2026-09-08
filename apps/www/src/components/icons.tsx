@@ -24,6 +24,15 @@ export function PlateIcon() {
   );
 }
 
+export function FigurineIcon() {
+  return (
+    <svg viewBox="0 0 24 24" fill="none" strokeWidth={1.5}>
+      <circle cx="12" cy="5" r="2.5" />
+      <path d="M9 21v-6l-2-4 2-2h6l2 2-2 4v6" />
+    </svg>
+  );
+}
+
 export function ChurchIcon() {
   return (
     <svg viewBox="0 0 24 24" fill="none" strokeWidth={1.5}>

@@ -298,7 +298,7 @@ footer .logo img {
 }
 .prod-grid {
   display: grid;
-  grid-template-columns: repeat(4, 1fr);
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
   gap: 20px;
 }
 .prod-card {
@@ -337,6 +337,22 @@ footer .logo img {
   padding: 3px 9px;
   border-radius: 10px;
   border: 1px dashed rgba(235, 185, 145, 0.5);
+}
+.prod-photo {
+  height: 150px;
+  position: relative;
+  background: var(--navy);
+}
+.photo-count {
+  position: absolute;
+  bottom: 8px;
+  right: 8px;
+  background: rgba(0, 0, 0, 0.55);
+  color: #fff;
+  font-size: 10px;
+  font-weight: 600;
+  padding: 3px 9px;
+  border-radius: 10px;
 }
 .prod-info {
   padding: 18px;
