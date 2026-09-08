@@ -33,6 +33,15 @@ export function FigurineIcon() {
   );
 }
 
+export function CommunionIcon() {
+  return (
+    <svg viewBox="0 0 24 24" fill="none" strokeWidth={1.5}>
+      <path d="M6 4h12l-1.5 8a4.5 4.5 0 01-9 0L6 4z" />
+      <path d="M12 16v5M9 21h6" />
+    </svg>
+  );
+}
+
 export function ChurchIcon() {
   return (
     <svg viewBox="0 0 24 24" fill="none" strokeWidth={1.5}>

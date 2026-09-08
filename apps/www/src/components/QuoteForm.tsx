@@ -99,6 +99,7 @@ ${message}`
             <option>기념접시</option>
             <option>미니어처 예배당</option>
             <option>기도상</option>
+            <option>성찬품</option>
             <option>기타 (직접 입력)</option>
           </select>
         </div>
