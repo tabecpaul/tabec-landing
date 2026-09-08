@@ -17,7 +17,7 @@ const items = [
     text: "성찬컵·성찬떡·성찬전병 등 성찬식용 소모품·용기 제작",
     imageSlug: "communion",
   },
-  { icon: <PlateIcon />, title: "기념접시", text: "창립·임직 기념일에 어울리는 각인·인쇄형 기념접시", imageSlug: "plate" },
+  { icon: <PlateIcon />, title: "말씀장식", text: "성경 말씀·창립 문구를 새긴 각인·인쇄형 말씀장식", imageSlug: "plate" },
 ];
 
 export default function Products() {

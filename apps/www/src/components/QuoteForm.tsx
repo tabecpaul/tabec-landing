@@ -98,7 +98,7 @@ ${message}`
             <option>레진 십자가</option>
             <option>조각상 / 예배당</option>
             <option>성찬 컵 / 전병</option>
-            <option>기념접시</option>
+            <option>말씀장식</option>
             <option>기타 (직접 입력)</option>
           </select>
         </div>
