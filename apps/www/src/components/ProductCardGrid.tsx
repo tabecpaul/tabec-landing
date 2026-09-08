@@ -31,15 +31,19 @@ export default function ProductCardGrid({ items }: { items: ProductCardItem[] })
       {items.map((item) => (
         <div className="prod-card" key={item.title}>
           {item.images && item.images.length > 0 ? (
-            <button
-              type="button"
-              className="prod-photo"
-              onClick={() => setLightbox({ title: item.title, images: item.images!, index: 0 })}
-              aria-label={`${item.title} 사진 크게 보기`}
-            >
-              <Image src={item.images[0]} alt={item.title} fill sizes="(max-width: 640px) 100vw, 320px" style={{ objectFit: "contain" }} />
-              {item.images.length > 1 && <span className="photo-count">+{item.images.length - 1}장</span>}
-            </button>
+            <div className="prod-photo-grid">
+              {item.images.map((src, i) => (
+                <button
+                  type="button"
+                  key={src}
+                  className="prod-photo-thumb"
+                  onClick={() => setLightbox({ title: item.title, images: item.images!, index: i })}
+                  aria-label={`${item.title} 사진 ${i + 1} 크게 보기`}
+                >
+                  <Image src={src} alt={`${item.title} ${i + 1}`} fill sizes="120px" style={{ objectFit: "contain" }} />
+                </button>
+              ))}
+            </div>
           ) : (
             <div className="prod-icon">
               {item.icon}

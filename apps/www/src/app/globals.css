@@ -338,27 +338,25 @@ footer .logo img {
   border-radius: 10px;
   border: 1px dashed rgba(235, 185, 145, 0.5);
 }
-.prod-photo {
-  height: 260px;
-  position: relative;
-  background: var(--cream);
-  border: none;
+.prod-photo-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 3px;
+  padding: 3px;
+  background: var(--line);
   border-bottom: 1px solid var(--line);
-  padding: 0;
-  width: 100%;
-  display: block;
-  cursor: zoom-in;
 }
-.photo-count {
-  position: absolute;
-  bottom: 8px;
-  right: 8px;
-  background: rgba(0, 0, 0, 0.55);
-  color: #fff;
-  font-size: 10px;
-  font-weight: 600;
-  padding: 3px 9px;
-  border-radius: 10px;
+.prod-photo-thumb {
+  position: relative;
+  aspect-ratio: 1 / 1;
+  border: none;
+  padding: 0;
+  background: var(--cream);
+  cursor: zoom-in;
+  transition: opacity 0.15s;
+}
+.prod-photo-thumb:hover {
+  opacity: 0.8;
 }
 .lightbox-overlay {
   position: fixed;
