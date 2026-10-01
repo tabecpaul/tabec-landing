@@ -9,15 +9,31 @@ on:
 jobs:
   ping:
     runs-on: ubuntu-latest
+    timeout-minutes: 3
     steps:
-      - name: Ping Supabase REST endpoint
+      - name: Read published card news
+        shell: bash
         run: |
-          status=$(curl -s -o /dev/null -w "%{http_code}" \
-            "${SUPABASE_URL}/rest/v1/" \
-            -H "apikey: ${SUPABASE_ANON_KEY}")
-          echo "Supabase responded with HTTP $status"
-          if [ "$status" -ge 500 ]; then
-            echo "::error::Supabase keepalive ping failed with status $status"
+          if [[ ! "$SUPABASE_URL" =~ ^https://[a-z0-9-]+\.supabase\.co/?$ ]] || \
+             [[ -z "$SUPABASE_ANON_KEY" || "$SUPABASE_ANON_KEY" == *$'\n'* || "$SUPABASE_ANON_KEY" == *$'\r'* ]]; then
+            echo "::error::Invalid or missing Supabase configuration"
+            exit 1
+          fi
+
+          if status=$(curl --silent --output /dev/null --write-out "%{http_code}" \
+            --connect-timeout 10 --max-time 20 \
+            --retry 2 --retry-max-time 60 \
+            "${SUPABASE_URL%/}/rest/v1/card_news?select=id&status=eq.published&limit=1" \
+            -H "apikey: ${SUPABASE_ANON_KEY}"); then
+            echo "Supabase responded with HTTP $status"
+          else
+            code=$?
+            echo "::error::Supabase transport/DNS request failed (curl exit $code)"
+            exit 1
+          fi
+
+          if [[ "$status" != "200" ]]; then
+            echo "::error::Supabase keepalive read failed with HTTP $status (expected 200)"
             exit 1
           fi
         env:
